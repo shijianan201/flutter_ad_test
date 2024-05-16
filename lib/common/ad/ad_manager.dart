@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -17,6 +18,9 @@ class AdManager with WidgetsBindingObserver {
         factoryId: "WonderlandNativeAdFactory",
         listener: NativeAdListener(
           onAdLoaded: (ad) {
+            if (kDebugMode) {
+              print("ad load success ${ad.responseInfo?.responseId}");
+            }
             completer.complete(ad);
           },
           onAdFailedToLoad: (ad, error) {

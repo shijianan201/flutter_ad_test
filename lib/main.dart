@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'common/ad/test_native_ad_page.dart';
 
-void main() {
+void main() async  {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
   runApp(const MyApp());
 }
 
@@ -104,7 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-                onPressed: _incrementCounter, child: Text("Go To ad page"))
+                onPressed: _incrementCounter, child: Text("Go To ad page")),
+            ElevatedButton(
+                onPressed: (){
+                  MobileAds.instance.openAdInspector((p0) { });
+                }, child: Text("Ad inspector"))
           ],
         ),
       ),
