@@ -108,10 +108,6 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(
                 onPressed: _incrementCounter, child: Text("Go To ad page")),
-            ElevatedButton(
-                onPressed: (){
-                  MobileAds.instance.openAdInspector((p0) { });
-                }, child: Text("Ad inspector"))
           ],
         ),
       ),
